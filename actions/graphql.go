@@ -9,8 +9,14 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gobuffalo/buffalo"
 	graphql "github.com/graph-gophers/graphql-go"
 )
+
+func GraphqlHandler(c buffalo.Context) error {
+	schema := graphql.MustParseSchema(Schema, &Resolver{})
+	return c.Render(200, r.JSON(&schema))
+}
 
 var Schema = `
   schema {

@@ -1,16 +1,11 @@
 package actions
 
 import (
-	"net/http"
-
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo/middleware"
 	"github.com/gobuffalo/buffalo/middleware/ssl"
 	"github.com/gobuffalo/envy"
-	"github.com/graph-gophers/graphql-go/relay"
 	"github.com/unrolled/secure"
-
-	graphql "github.com/graph-gophers/graphql-go"
 
 	// "github.com/avachen2005/voyager/models"
 	"github.com/gobuffalo/buffalo/middleware/csrf"
@@ -54,8 +49,7 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 
-		schema := graphql.MustParseSchema(Schema, &Resolver{})
-		app.GET("/query", &relay.Handler{Schema: schema})
+		app.GET("/query", GraphqlHandler)
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
