@@ -1,13 +1,18 @@
 package actions
 
 import (
+	"net/http"
+
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo/middleware"
 	"github.com/gobuffalo/buffalo/middleware/ssl"
 	"github.com/gobuffalo/envy"
+	"github.com/graph-gophers/graphql-go/relay"
 	"github.com/unrolled/secure"
 
-	"github.com/avachen2005/voyager/models"
+	graphql "github.com/graph-gophers/graphql-go"
+
+	// "github.com/avachen2005/voyager/models"
 	"github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
@@ -42,12 +47,15 @@ func App() *buffalo.App {
 		// Wraps each request in a transaction.
 		//  c.Value("tx").(*pop.PopTransaction)
 		// Remove to disable this.
-		app.Use(middleware.PopTransaction(models.DB))
+		// app.Use(middleware.PopTransaction(models.DB))
 
 		// Setup and use translations:
-		app.Use(translations())
+		// app.Use(translations())
 
 		app.GET("/", HomeHandler)
+
+		schema := graphql.MustParseSchema(Schema, &Resolver{})
+		app.GET("/query", &relay.Handler{Schema: schema})
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
