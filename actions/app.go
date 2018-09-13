@@ -47,11 +47,11 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		// app.Use(translations())
 
-		app.GET("/", HomeHandler)
+		app.GET("/grqphiql", GraphiqlHandler)
 
-		app.GET("/query", GraphqlHandler)
+		app.POST("/query", GraphqlHandler)
 
-		app.ServeFiles("/", assetsBox) // serve files from the public directory
+		// app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
 	return app
