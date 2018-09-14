@@ -1,4 +1,4 @@
-package actions
+package graphql
 
 import (
 	"github.com/gobuffalo/buffalo"

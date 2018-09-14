@@ -7,7 +7,7 @@ import (
 	"github.com/gobuffalo/envy"
 	"github.com/unrolled/secure"
 
-	// "github.com/avachen2005/voyager/models"
+	"github.com/avachen2005/voyager/graphql"
 	// "github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
@@ -47,9 +47,9 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		// app.Use(translations())
 
-		app.GET("/graphiql", GraphiqlHandler)
+		app.GET("/graphiql", graphql.GraphiqlHandler)
 
-		app.POST("/query", buffalo.WrapHandler(GraphqlHandler()))
+		app.POST("/query", buffalo.WrapHandler(graphql.GraphqlHandler()))
 
 		// serve files from the public directory
 		app.ServeFiles("/", assetsBox)
