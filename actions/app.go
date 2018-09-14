@@ -8,7 +8,7 @@ import (
 	"github.com/unrolled/secure"
 
 	// "github.com/avachen2005/voyager/models"
-	"github.com/gobuffalo/buffalo/middleware/csrf"
+	// "github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
 )
@@ -37,7 +37,7 @@ func App() *buffalo.App {
 
 		// Protect against CSRF attacks. https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
 		// Remove to disable this.
-		app.Use(csrf.New)
+		// app.Use(csrf.New)
 
 		// Wraps each request in a transaction.
 		//  c.Value("tx").(*pop.PopTransaction)
@@ -49,7 +49,7 @@ func App() *buffalo.App {
 
 		app.GET("/grqphiql", GraphiqlHandler)
 
-		app.POST("/query", GraphqlHandler)
+		app.POST("/query", buffalo.WrapHandler(GraphqlHandler()))
 
 		// app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}

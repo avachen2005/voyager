@@ -6,16 +6,19 @@ package actions
 import (
 	"encoding/base64"
 	"fmt"
+	"net/http"
 	"strconv"
 	"strings"
 
-	"github.com/gobuffalo/buffalo"
+	"github.com/graph-gophers/graphql-go/relay"
+
 	graphql "github.com/graph-gophers/graphql-go"
 )
 
-func GraphqlHandler(c buffalo.Context) error {
+func GraphqlHandler() http.Handler {
+
 	schema := graphql.MustParseSchema(Schema, &Resolver{})
-	return c.Render(200, r.JSON(&schema))
+	return &relay.Handler{Schema: schema}
 }
 
 var Schema = `
