@@ -1,0 +1,7 @@
+type Genre {
+  id: ID!
+  type: String
+  name: String
+  parentGenreID: String
+  ratingValue: String
+}

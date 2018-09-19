@@ -1,0 +1,10 @@
+type Eula {
+  id: ID!
+  createdAt: Int!
+  updatedAt: Int
+  deletedAt: Int
+  Platform: String
+  Content: String
+  LocaleCode: String
+  ContentType: String
+}

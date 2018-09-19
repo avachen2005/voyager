@@ -1,0 +1,8 @@
+type Query {
+  collections() [Collection!]
+  videos() [Video!]
+  eulas() [Eula!]
+  images() [Image!]
+  artists() [Artist!]
+  genres() [Genre!]
+}
