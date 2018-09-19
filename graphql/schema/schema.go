@@ -1,12 +1,10 @@
-package main
+package schema
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
-	// "github.com/kr/pretty"
 )
 
 func String() string {
@@ -19,20 +17,15 @@ func String() string {
 			if b, err := ioutil.ReadFile(file); err != nil {
 				panic(err)
 			} else {
-				ret = ret + strings.Trim(string(b))
+				ret = ret + strings.TrimSpace(string(b))
 			}
 		}
 
-		fmt.Println(ret)
 		return nil
 	}); err != nil {
+
 		panic(err)
 	}
 
 	return ""
-}
-
-func main() {
-
-	String()
 }
