@@ -1,44 +1,4 @@
 type Video {
   id: ID!
   title: String!
-  titleKana: String
-  originalTitle: String
-  cpid: String
-  workType: String
-  nodid: String
-  workNumber: String
-  displayTitle: String
-  languageOfOriginalTitle: String
-  seriesTitle: String
-  seasonSequenceNumber: Int
-  episodeSequenceNumber: Int
-  LongSynopsis: String
-  shortSynopsis: String
-  firstReleaseYear: String
-  releaseCountryDate: String
-  countryOfOrigin: String
-  originalLanguage: String
-  ratingValue: String
-  copyright: String
-  legend: String
-  mood: String
-  keyword: String
-  director: String
-  creator: String
-  actors: String
-  openingBeginTime: Int
-  openingEndTime: Int
-  endingBeginTime: Int
-  chapterTime: String
-  languages: String
-  subtitles: String
-  kidsMode: Int
-  genre: String
-  hdrFlag: String
-  codecFlag: String
-  resolutionFlag: String
-  videoContent: String
-  trailerContent: String
-  imageContent: String
-  wikiURL: String
 }

@@ -1,13 +1,4 @@
 type Artist {
   id: ID!
   name: String
-  nameKana: String
-  occupation: String
-  hometown: String
-  birthday: String
-  sign: String
-  bloodType: String
-  bio: string
-  wikiurl: string
-  thumbnail: string
 }

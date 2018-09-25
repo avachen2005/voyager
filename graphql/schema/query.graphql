@@ -1,8 +1,4 @@
 type Query {
-  collections() [Collection!]
-  videos() [Video!]
-  eulas() [Eula!]
-  images() [Image!]
-  artists() [Artist!]
-  genres() [Genre!]
+  videos(id: ID, title: String) [Video!]
+  artists(id: ID, name: String) [Artist!]
 }
