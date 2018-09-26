@@ -1,4 +1,0 @@
-type Video {
-  id: ID!
-  title: String!
-}

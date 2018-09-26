@@ -1,15 +1,30 @@
 package resolver
 
-// graphql "github.com/graph-gophers/graphql-go"
+import graphql "github.com/graph-gophers/graphql-go"
 
 type Resolver struct{}
 
-func (r *Resolver) Videos(args VideoArgument) (*VideosResolver, error) {
-
-	return &VideosResolver{}, nil
+type CharacterResolver struct {
+	Character
 }
 
-func (r *Resolver) Artists(args ArtistArgument) (*ArtistsResolver, error) {
+type Character struct {
+	ID   graphql.ID
+	Name string
+}
 
-	return &ArtistsResolver{}, nil
+func (r *Resolver) Character() *CharacterResolver {
+
+	ptr := new(string)
+	*ptr = "name"
+
+	return &CharacterResolver{}
+}
+
+func (r *CharacterResolver) ID() graphql.ID {
+	return graphql.ID("1")
+}
+
+func (r *CharacterResolver) Name() string {
+	return "name"
 }

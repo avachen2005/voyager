@@ -9,9 +9,9 @@ import (
 
 func String() string {
 
-	if err := filepath.Walk(".", func(file string, info os.FileInfo, err error) error {
+	var ret string = ""
 
-		var ret string = ""
+	if err := filepath.Walk(".", func(file string, info os.FileInfo, err error) error {
 		if strings.HasSuffix(file, ".graphql") {
 
 			if b, err := ioutil.ReadFile(file); err != nil {
@@ -20,12 +20,10 @@ func String() string {
 				ret = ret + strings.TrimSpace(string(b))
 			}
 		}
-
 		return nil
 	}); err != nil {
-
 		panic(err)
 	}
 
-	return ""
+	return ret
 }

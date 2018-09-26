@@ -1,4 +1,3 @@
-type Query {
-  videos(id: ID, title: String) [Video!]
-  artists(id: ID, name: String) [Artist!]
-}
+  type Query {
+    character: character!
+  }
