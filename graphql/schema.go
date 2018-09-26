@@ -1,4 +1,4 @@
-package schema
+package graphql
 
 import (
 	"io/ioutil"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func String() string {
+func GenerateSchema() string {
 
 	var ret string = ""
 
