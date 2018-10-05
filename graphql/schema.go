@@ -1,29 +1,25 @@
 package graphql
 
 import (
-	"io/ioutil"
-	"os"
-	"path/filepath"
+	"fmt"
 	"strings"
+
+	"github.com/gobuffalo/packr"
 )
 
 func GenerateSchema() string {
 
-	var ret string = ""
+	var ret string
+	box := packr.NewBox(".")
 
-	if err := filepath.Walk(".", func(file string, info os.FileInfo, err error) error {
-		if strings.HasSuffix(file, ".graphql") {
+	box.Walk(func(path string, f packr.File) error {
 
-			if b, err := ioutil.ReadFile(file); err != nil {
-				panic(err)
-			} else {
-				ret = ret + strings.TrimSpace(string(b))
-			}
+		if strings.HasSuffix(path, ".graphql") {
+			ret = ret + box.String(path)
 		}
+
 		return nil
-	}); err != nil {
-		panic(err)
-	}
+	})
 
 	return ret
 }

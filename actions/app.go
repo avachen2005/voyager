@@ -10,7 +10,6 @@ import (
 	"github.com/avachen2005/voyager/graphql"
 	// "github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
-	"github.com/gobuffalo/packr"
 )
 
 // ENV is used to help switch settings based on where the
@@ -62,13 +61,13 @@ func App() *buffalo.App {
 // and will return a middleware to use to load the correct locale for each
 // request.
 // for more information: https://gobuffalo.io/en/docs/localization
-func translations() buffalo.MiddlewareFunc {
-	var err error
-	if T, err = i18n.New(packr.NewBox("../locales"), "en-US"); err != nil {
-		app.Stop(err)
-	}
-	return T.Middleware()
-}
+// func translations() buffalo.MiddlewareFunc {
+// 	var err error
+// 	if T, err = i18n.New(packr.NewBox("../locales"), "en-US"); err != nil {
+// 		app.Stop(err)
+// 	}
+// 	return T.Middleware()
+// }
 
 // forceSSL will return a middleware that will redirect an incoming request
 // if it is not HTTPS. "http://example.com" => "https://example.com".
